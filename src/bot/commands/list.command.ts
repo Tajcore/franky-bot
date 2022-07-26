@@ -7,7 +7,7 @@ import {
   UsePipes,
 } from '@discord-nestjs/core';
 import { UsersService } from 'src/users/users.service';
-import { BotService } from '../bot.service';
+//import { BotService } from '../bot.service';
 
 import { ListDto } from '../dto/list.dto';
 
@@ -19,7 +19,7 @@ import { ListDto } from '../dto/list.dto';
 export class ListCommand implements DiscordTransformedCommand<ListDto> {
   constructor(
     private readonly userService: UsersService,
-    private readonly botService: BotService,
+    //private readonly botService: BotService,
   ) {}
   async handler(
     @Payload() dto: ListDto,

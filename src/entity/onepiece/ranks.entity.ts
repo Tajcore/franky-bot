@@ -1,5 +1,5 @@
-import { Faction } from 'src/factions/factions.entity';
-import { User } from 'src/users/users.entity';
+import { Faction } from './factions.entity';
+import { User } from './users.entity';
 import {
   Entity,
   Column,
@@ -11,17 +11,17 @@ import {
 @Entity()
 export class Rank {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  description: string;
+  description!: string;
 
   @ManyToOne(() => Faction, (faction) => faction.ranks)
-  faction: Faction;
+  faction!: Faction;
 
   @OneToMany(() => User, (user) => user.rank)
-  users: User[];
+  users!: User[];
 }

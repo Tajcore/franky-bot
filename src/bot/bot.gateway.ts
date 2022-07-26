@@ -4,9 +4,7 @@ import { Client, MessageReaction, TextChannel, User } from 'discord.js';
 import { UsersService } from 'src/users/users.service';
 import { FactionsService } from 'src/factions/factions.service';
 import { RanksService } from 'src/ranks/ranks.service';
-import { User as UserEntity } from 'src/users/users.entity';
-import { Faction } from 'src/factions/factions.entity';
-import { Rank } from 'src/ranks/ranks.entity';
+import { Faction, Rank, User as UserType } from '#entity/onepiece';
 // tslint:disable-next-line
 @Injectable()
 export class BotGateway {
@@ -42,7 +40,7 @@ export class BotGateway {
 
         const marine = (await this.factionService.findOne('Marine')) as Faction;
         const marineRank = (await this.rankService.findOne('Rookie')) as Rank;
-        const userEntity = new UserEntity();
+        const userEntity = new UserType();
         userEntity.faction = marine;
         userEntity.rank = marineRank;
         userEntity.tag = user.tag;
@@ -55,7 +53,7 @@ export class BotGateway {
       case '%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F':
         const pirate = (await this.factionService.findOne('Pirate')) as Faction;
         const pirateRank = (await this.rankService.findOne('Rookie')) as Rank;
-        const userEntity2 = new UserEntity();
+        const userEntity2 = new UserType();
         userEntity2.faction = pirate;
         userEntity2.rank = pirateRank;
         userEntity2.tag = user.tag;

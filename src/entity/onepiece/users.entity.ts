@@ -1,25 +1,25 @@
-import { Faction } from 'src/factions/factions.entity';
-import { Party } from 'src/parties/parties.entity';
-import { Rank } from 'src/ranks/ranks.entity';
+import { Faction } from './factions.entity';
+import { Party } from './parties.entity';
+import { Rank } from './ranks.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  tag: string;
+  tag!: string;
 
   @ManyToOne(() => Rank, (rank) => rank.users)
-  rank: Rank;
+  rank!: Rank;
 
   @ManyToOne(() => Party, (party) => party.users)
   party?: Party;
 
   @ManyToOne(() => Faction, (faction) => faction.users)
-  faction: Faction;
+  faction!: Faction;
 
   @Column()
-  reputation: number;
+  reputation!: number;
 }

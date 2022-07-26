@@ -4,16 +4,37 @@ import { AppService } from './app.service';
 import { DiscordModule, DiscordModuleOption } from '@discord-nestjs/core';
 import { GatewayIntentBits, Partials } from 'discord.js';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { LoggerModule } from 'nestjs-pino';
 import { BotModule } from './bot/bot.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { RanksModule } from './ranks/ranks.module';
 import { FactionsModule } from './factions/factions.module';
 import { PartiesModule } from './parties/parties.module';
+import { loggerOptions, configuration } from './config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+
+    LoggerModule.forRoot(loggerOptions),
+    // Configuration
+    // https://docs.nestjs.com/techniques/configuration
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configuration],
+    }),
+    // Database
+    // https://docs.nestjs.com/techniques/database
+    TypeOrmModule.forRootAsync({
+      useFactory: async (config: ConfigService) => ({
+        ...await config.get('db'),
+      }),
+      inject: [ConfigService],
+    }),
+    
+   
+
+
     DiscordModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) =>
@@ -43,24 +64,7 @@ import { PartiesModule } from './parties/parties.module';
         } as DiscordModuleOption),
       inject: [ConfigService],
     }),
-    TypeOrmModule.forRootAsync({
-      useFactory: () => ({
-        type: 'mysql',
-        host: process.env.DB_HOST,
-        port: parseInt(process.env.DB_PORT as string) || 3309,
-        username: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_NAME,
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-        synchronize: true,
-        migrations: [__dirname + '/**/*{.ts,.js}'],
-        migrationsTableName: 'franky_bot_migrations_table',
-        cli: {
-          migrationsDir: 'migrations',
-        },
-        logging: true,
-      }),
-    }),
+
     BotModule,
     UsersModule,
     RanksModule,

@@ -12,5 +12,5 @@ export class ListDto {
     description: 'Either list all users by faction',
     required: false,
   })
-  faction: string;
+  faction!: string;
 }

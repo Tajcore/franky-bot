@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Faction } from './factions.entity';
+import { Faction } from '../entity/onepiece/factions.entity';
 import { FactionsService } from './factions.service';
 
 @Module({

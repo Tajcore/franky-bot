@@ -7,20 +7,21 @@ import {
   OneToOne,
   JoinColumn,
 } from 'typeorm';
-import { User } from 'src/users/users.entity';
-import { Faction } from 'src/factions/factions.entity';
+
+import { User } from './users.entity';
+import { Faction } from './factions.entity';
 
 @Entity()
 export class Party {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
   @Column()
-  name: string;
+  name!: string;
   @OneToOne(() => User)
   @JoinColumn()
-  leader: User;
+  leader!: User;
   @ManyToOne(() => Faction, (faction) => faction.parties)
-  faction: Faction;
+  faction!: Faction;
   @OneToMany(() => User, (user: User) => user.party)
-  users: User[];
+  users!: User[];
 }

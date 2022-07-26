@@ -1,6 +1,6 @@
 import { InjectDiscordClient } from '@discord-nestjs/core';
 import { Injectable } from '@nestjs/common';
-import { Client, GuildMember, User } from 'discord.js';
+import { Client, GuildMember } from 'discord.js';
 
 @Injectable()
 export class BotService {
