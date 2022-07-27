@@ -1,6 +1,6 @@
-import { Faction } from './factions.entity';
-import { Party } from './parties.entity';
-import { Rank } from './ranks.entity';
+import { Faction } from '../factions/factions.entity';
+import { Party } from '../parties/parties.entity';
+import { Rank } from '../ranks/ranks.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 
 @Entity()

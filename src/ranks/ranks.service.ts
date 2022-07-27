@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Rank } from '../entity/onepiece/ranks.entity';
+import { Rank } from './ranks.entity';
 
 @Injectable()
 export class RanksService {

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Faction } from '../entity/onepiece/factions.entity';
+import { Faction } from './factions.entity';
 
 @Injectable()
 export class FactionsService {

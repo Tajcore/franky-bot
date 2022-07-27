@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { User } from './users.entity';
-import { Rank } from './ranks.entity';
-import { Party } from './parties.entity';
+import { User } from '../users/users.entity';
+import { Rank } from '../ranks/ranks.entity';
+import { Party } from '../parties/parties.entity';
 
 @Entity()
 export class Faction {

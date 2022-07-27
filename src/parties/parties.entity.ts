@@ -8,8 +8,8 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import { User } from './users.entity';
-import { Faction } from './factions.entity';
+import { User } from '../users/users.entity';
+import { Faction } from '../factions/factions.entity';
 
 @Entity()
 export class Party {

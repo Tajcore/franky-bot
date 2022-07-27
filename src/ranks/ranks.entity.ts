@@ -1,5 +1,5 @@
-import { Faction } from './factions.entity';
-import { User } from './users.entity';
+import { Faction } from '../factions/factions.entity';
+import { User } from '../users/users.entity';
 import {
   Entity,
   Column,
