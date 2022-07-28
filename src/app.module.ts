@@ -12,6 +12,7 @@ import { RanksModule } from './ranks/ranks.module';
 import { FactionsModule } from './factions/factions.module';
 import { PartiesModule } from './parties/parties.module';
 import { loggerOptions, configuration } from './config';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -70,6 +71,7 @@ import { loggerOptions, configuration } from './config';
     RanksModule,
     FactionsModule,
     PartiesModule,
+    DatabaseModule,
   ],
   controllers: [AppController],
   providers: [AppService],
